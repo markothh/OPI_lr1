@@ -43,6 +43,8 @@ int main()
 
             CreateRandomMatrix(&matrix, ROWS, COLS);
 
+            PrintMatrix(matrix, ROWS, COLS);
+
             LineSeparator();
 
             break;
@@ -100,6 +102,17 @@ void CreateRandomMatrix(int*** matrix, int rows, int cols)
             (*matrix)[i][j] = rand() % RANGE_TOP + RANGE_BOTTOM;
         }
     }
+}
+
+void PrintMatrix(int** matrix, int rows, int cols)
+{
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cout << setw(4) << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
 }
 
 
