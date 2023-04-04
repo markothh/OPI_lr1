@@ -115,6 +115,56 @@ void PrintMatrix(int** matrix, int rows, int cols)
     cout << endl;
 }
 
+int Min(int* array, int size)
+{
+    int min = 21, minIndex = 0;
+
+    for (int i = 0; i < size; i++) {
+        if (array[i] < min)
+        {
+            min = array[i];
+            minIndex = i;
+        }
+    }
+
+    return minIndex;
+}
+
+int Max(int* array, int size)
+{
+    int max = 0, maxIndex = 0;
+
+    for (int i = 0; i < size; i++) {
+        if (array[i] > max)
+        {
+            max = array[i];
+            maxIndex = i;
+        }
+    }
+
+    return maxIndex;
+}
+
+void ReverseRowBetweenMinMax(int* array, int size)
+{
+    int minIndex = Min(array, size), maxIndex = Max(array, size);
+    int buf = 0;
+
+    if (minIndex > maxIndex)
+    {
+        buf = minIndex;
+        minIndex = maxIndex;
+        maxIndex = buf;
+    }
+
+    for (int i = minIndex + 1; i < (maxIndex + minIndex) / 2 + 1; i++) {
+        buf = array[i];
+        array[i] = array[maxIndex + minIndex - i];
+        array[maxIndex + minIndex - i] = buf;
+    }
+}
+
+
 
 void Menu()
 {
