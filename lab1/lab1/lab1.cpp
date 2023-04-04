@@ -67,11 +67,16 @@ int main()
 
         case 3:
 
-           cout << " Check whether the main diagonal is symmetric with respect to its middle element" << endl << endl;
+            if (MatrixIsEmpty(matrix))
+            {
+                cout << "A matrix has not been created yet\n";
+            }
+            else
+            {
+                cout << "Main diagonal is symmetric relative to the middle: " << boolalpha << IsDiagonalSymmetric(matrix, ROWS, COLS) << endl << endl;
+            }
 
             LineSeparator();
-
-            
             break;
 
 
@@ -176,6 +181,22 @@ void ReverseMatrixBetweenMinMax(int** matrix, int rows, int cols)
         ReverseRowBetweenMinMax(matrix[i], cols);
     }
 };
+
+bool MatrixIsEmpty(int** matrix)
+{
+    return matrix == nullptr;
+}
+
+bool IsDiagonalSymmetric(int** matrix, int rows, int cols)
+{
+    for (int i = 0; i < rows; i++) {
+        if (matrix[i][i] != matrix[rows - i - 1][rows - i - 1])
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
 
 
 void Menu()
