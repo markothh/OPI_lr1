@@ -82,10 +82,16 @@ int main()
 
         case 4:
 
-            cout << "Find the sum of the positive elements among the matrix elements that are highlighted in black (according to the task)" << endl << endl;
+            if (MatrixIsEmpty(matrix))
+            {
+                cout << "A matrix has not been created yet\n";
+            }
+            else
+            {
+                cout << "Sum of the positive elements in the square is " << SquarePositiveSum(matrix, ROWS, COLS) << endl;
+            }
 
             LineSeparator();
-
             break;
 
         case 0:
@@ -196,6 +202,22 @@ bool IsDiagonalSymmetric(int** matrix, int rows, int cols)
         }
     }
     return 1;
+}
+
+int SquarePositiveSum(int** matrix, int rows, int cols)
+{
+    int sum = 0;
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (matrix[i][j] > 0)
+            {
+                sum += matrix[i][j];
+            }
+        }
+    }
+
+    return sum;
 }
 
 
