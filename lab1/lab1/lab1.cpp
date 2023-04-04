@@ -51,12 +51,18 @@ int main()
 
 
         case 2:
-
-            cout << " Rearrange the elements located between the minimum and maximum elements in reverse order" << endl << endl;
+            if (MatrixIsEmpty(matrix))
+            {
+                cout << "A matrix has not been created yet\n";
+            }
+            else
+            {
+                cout << "The output of the matrix in which the elements \nare swapped between minimum and maximum in each row:" << endl << endl;
+                ReverseMatrixBetweenMinMax(matrix, ROWS, COLS);
+                PrintMatrix(matrix, ROWS, COLS);
+            }
 
             LineSeparator();
-
-            
             break;
 
         case 3:
@@ -164,6 +170,12 @@ void ReverseRowBetweenMinMax(int* array, int size)
     }
 }
 
+void ReverseMatrixBetweenMinMax(int** matrix, int rows, int cols)
+{
+    for (int i = 0; i < rows; i++) {
+        ReverseRowBetweenMinMax(matrix[i], cols);
+    }
+};
 
 
 void Menu()
